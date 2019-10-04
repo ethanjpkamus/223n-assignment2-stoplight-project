@@ -1,0 +1,24 @@
+RaidoButton redbutton = new System.Windows.Forms.Button();
+RadioButton yellowbutton = ...;
+RadioButton greenbutton = ...;
+
+GroupBox radiocontain = new groupBox();
+
+redbutton.Text = "red";
+redbutton.Size = new System.Drawing.Size(40,18);
+greenbutton.Text...
+...
+...
+
+
+radiocontain.Text = "Pick a color";
+radiocontain.Size = new System.Draeing.Size(220,24);
+radiocontain.Location = new System.Drawing.Point(150,900);
+
+radiocontain.Controls.Add(redbutton);
+radiocontain.Controls.Add(greenbutton);
+radiocontain.Controls.Add(yellowbutton);
+
+Controls.Add(radiocontain);
+Controls.Add(quitbutton);
+Controls.Add(startbutton);

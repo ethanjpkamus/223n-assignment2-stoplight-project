@@ -1,0 +1,72 @@
+example for red = 4sec, yellow = 1sec, green = 3sec
+
+public class Trafficsignal : Form{
+	
+	private static Systems.Timers.Timer Tclock = new Systems.Timers.Timer();
+	private ulong tickcounter = 0; //ulong is like an int, but...
+	privaet enum Trafficolor {red,yellow,green};
+	Trafficolor Light = Trafficolor.red;
+	
+	...
+
+	public Trafficsignal(){
+	
+		...
+		
+		Tclock.Enabled = false;
+		Tclock.Elapsed += new ElapsedEventHandler(Signal);
+		Tclock.Interval = 1000;
+
+		...
+		
+	}
+	
+	protected void Signal(SystemObject send, ElapsedEventArg e){
+		
+		tickcounter++;
+		switch(Light){
+			
+			case Trafficolor.red:
+			
+				if(tickcounter > 4){
+					tickcounter = 0;
+					Light = Trafficolor.green;
+					Invalidate();
+					
+				} //end of if statement
+				break;
+			
+			case Trafficolor.green:
+				
+				if(tickcount > 3){
+					tickcount = 0;
+					Light = Trafficolor.yellow;
+					Invalidate();
+				} //end of if statement
+				break;
+				
+		} //end of seitch
+	}//end of signal
+	
+	protected overrided void OnPaint(PaintEventArg e){
+		Graphic graph = e.Graphics;
+		switch(Light){
+			case Trafficolor.red:
+				graph.FillEllipse(Brushes.Red,100,50,225,225);
+				graph.FillEllipse(Brushes.Transparent,100,250,225,225);
+				graph.FillEllipse(Brushes.Transparent,100,500,225,225);
+				break;
+			
+			case Trafficolor.yellow:
+				
+				...
+				
+			case Trafficolor.green:
+				
+				...
+			
+		}//end of switch
+		base.OnPaint(e);
+	}//end of OnPaint
+	
+}
